@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+        <script type="text/javascript">
+        var app = angular.module('angularjs-starter', []);
+
+        app.controller('MainCtrl', ['$scope', function($scope) {
+           
+
+            $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];
+  
+            $scope.addNewChoice = function() {
+              var newItemNo = $scope.choices.length+1;
+              $scope.choices.push({'id':'choice'+newItemNo});
+            };
+                
+            $scope.removeChoice = function() {
+              var lastItem = $scope.choices.length-1;
+              $scope.choices.splice(lastItem);
+            };
+        }]);
+        </script>
+		<style>
+		.input-group{
+		padding-bottom:15px;
+		}
+		.modal-header{
+background-color: #ccc;
+}
+.modal-dialog{
+margin-top: 30vh;
+}
+.input-group{
+padding-bottom:15px;
+}
+
+.table.no-border tr td, .table.no-border tr th {
+  border-width: 0;
+}
+.table{
+   display:block;
+	}
+
+		</style>
+    </head>
+    <body ng-app="angularjs-starter">
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+		<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+		  <div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <div class="modal-title">Select Condition 1> and <condition 2></div>
+						<div>Union (+)</div>
+						<div>Select <Condition 3> (+)</div>
+						<div>Union (+)</div>
+						<div>Select <Condition 4>(+)</div>
+                    </div>
+                    <div class="modal-body">
+                          <table class="table no-border">
+							  <thead>
+								<tr>
+									<th></th>
+									<th></th>
+									<th class="hidden-xs"></th>
+									<th>Condition</th>
+									<th>Operation</th>
+								</tr> 
+							  </thead>
+								<tbody>
+								  <tr>
+									<td>Filter Rule 1</td>
+									<td>
+									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
+									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
+									</td>
+									<td class="bs-checkbox">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</td>
+									<td>
+									<select class="selectpicker">
+									  <option>Mustard</option>
+									  <option>Ketchup</option>
+									  <option>Relish</option>
+									</select>
+									</td>
+									<td>
+									<select class="selectpicker">
+										<option>Mustard</option>
+									    <option>Ketchup</option>
+									    <option>Relish</option>
+									</select>
+
+									</td>
+									
+									
+								  </tr>
+								    <tr>
+									<td>Filter Rule 2</td>
+									<td>
+									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
+									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
+									</td>
+									<td class="bs-checkbox">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</td>
+									<td>
+									<select class="selectpicker">
+									  <option>Mustard</option>
+									  <option>Ketchup</option>
+									  <option>Relish</option>
+									</select>
+									</td>
+									<td>
+									<select class="selectpicker">
+									  <option>Mustard</option>
+									  <option>Ketchup</option>
+									  <option>Relish</option>
+									</select>
+									</td>
+								  </tr>
+								      <tr>
+									<td>Filter Rule 3</td>
+									<td>
+									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
+									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
+									</td>
+									<td class="bs-checkbox">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</td>
+									<td>
+									<select class="selectpicker">
+									  <option>Mustard</option>
+									  <option>Ketchup</option>
+									  <option>Relish</option>
+									</select>
+									</td>
+									
+									<td>
+									<select class="selectpicker">
+									  <option>Mustard</option>
+									  <option>Ketchup</option>
+									  <option>Relish</option>
+									</select>
+									</td>
+								  </tr>
+								</tbody>
+							</table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">ok</button>
+                    </div>
+                </div>
+			</div>
+		  </div>
+		
+    </body>
+</html>															  													  

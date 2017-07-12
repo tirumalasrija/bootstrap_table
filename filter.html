@@ -42,7 +42,9 @@ padding-bottom:15px;
   border-width: 0;
 }
 .table{
-   display:block;
+display:block;
+       border-collapse: separate;
+    border-spacing: 0px 5px;
 	}
 
 		</style>
@@ -72,21 +74,21 @@ padding-bottom:15px;
 								</tr> 
 							  </thead>
 								<tbody>
-								  <tr>
+								  <tr style="margin-top:10px;">
 									<td>Filter Rule 1</td>
 									<td>
 									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
 									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
 									</td>
-									<td class="bs-checkbox">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</td>
-									<td>
+									<td class="bs-checkbox active">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</td>
+									<td class="active">
 									<select class="selectpicker">
 									  <option>Mustard</option>
 									  <option>Ketchup</option>
 									  <option>Relish</option>
 									</select>
 									</td>
-									<td>
+									<td class="active">
 									<select class="selectpicker">
 										<option>Mustard</option>
 									    <option>Ketchup</option>
@@ -97,21 +99,59 @@ padding-bottom:15px;
 									
 									
 								  </tr>
-								    <tr>
-									<td>Filter Rule 2</td>
-									<td>
-									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
-									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
+								  
+								  	  <tr style="margin-top:10px;">
+									<td></td>
+									<td align="right">
+									 
+									  <button class="btn btn-default" type="button" id="btn-plus" ><span class="glyphicon glyphicon-minus"></span></button>
 									</td>
-									<td class="bs-checkbox">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</td>
-									<td>
+									<td class="bs-checkbox active">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</td>
+									<td class="active">
 									<select class="selectpicker">
 									  <option>Mustard</option>
 									  <option>Ketchup</option>
 									  <option>Relish</option>
 									</select>
 									</td>
+									<td class="active">
+									<select class="selectpicker">
+										<option>Mustard</option>
+									    <option>Ketchup</option>
+									    <option>Relish</option>
+									</select>
+
+									</td>
+									
+									
+								  </tr>
+								  
+								   <tr>
+									<td></td>
 									<td>
+									 
+									  Union(+)
+									</td>
+									
+									
+									
+								  </tr>
+								  
+								    <tr>
+									<td>Filter Rule 2</td>
+									<td>
+									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
+									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
+									</td>
+									<td class="bs-checkbox active">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</td>
+									<td class="active">
+									<select class="selectpicker">
+									  <option>Mustard</option>
+									  <option>Ketchup</option>
+									  <option>Relish</option>
+									</select>
+									</td>
+									<td class="active">
 									<select class="selectpicker">
 									  <option>Mustard</option>
 									  <option>Ketchup</option>
@@ -119,14 +159,22 @@ padding-bottom:15px;
 									</select>
 									</td>
 								  </tr>
+								  
+								   <tr>
+									<td></td>
+									<td>
+									  Union(+)
+									</td>
+								  </tr>
+								  
 								      <tr>
 									<td>Filter Rule 3</td>
 									<td>
 									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
 									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
 									</td>
-									<td class="bs-checkbox">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</td>
-									<td>
+									<td class="bs-checkbox active">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</td>
+									<td class="active">
 									<select class="selectpicker">
 									  <option>Mustard</option>
 									  <option>Ketchup</option>
@@ -134,7 +182,7 @@ padding-bottom:15px;
 									</select>
 									</td>
 									
-									<td>
+									<td class="active">
 									<select class="selectpicker">
 									  <option>Mustard</option>
 									  <option>Ketchup</option>

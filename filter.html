@@ -10,13 +10,22 @@
 
         app.controller('MainCtrl', ['$scope', function($scope) {
            
-
+			$scope.rows = [{id: 'row1'}, {id: 'row2'}];
+			$scope.addNewRow = function() {
+              var newItemNo = $scope.rows.length+1;
+              $scope.rows.push({'id':'row'+newItemNo});
+            }; 
+			$scope.removeRow = function() {
+              var lastItem = $scope.rows.length-1;
+              $scope.rows.splice(lastItem);
+            };
+			
             $scope.choices = [{id: 'choice1'}, {id: 'choice2'}];
-  
             $scope.addNewChoice = function() {
               var newItemNo = $scope.choices.length+1;
               $scope.choices.push({'id':'choice'+newItemNo});
             };
+			
                 
             $scope.removeChoice = function() {
               var lastItem = $scope.choices.length-1;
@@ -31,9 +40,7 @@
 		.modal-header{
 background-color: #ccc;
 }
-.modal-dialog{
-margin-top: 30vh;
-}
+
 .input-group{
 padding-bottom:15px;
 }
@@ -58,12 +65,12 @@ display:block;
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <div class="modal-title">Select Condition 1> and <condition 2></div>
 						<div>Union (+)</div>
-						<div>Select <Condition 3> (+)</div>
+						<div>Select {{ Condition 3 (+)</div>
 						<div>Union (+)</div>
 						<div>Select <Condition 4>(+)</div>
                     </div>
                     <div class="modal-body">
-                          <table class="table no-border">
+                          <table class="table no-border" ng-controller="MainCtrl">
 							  <thead>
 								<tr>
 									<th></th>
@@ -74,11 +81,11 @@ display:block;
 								</tr> 
 							  </thead>
 								<tbody>
-								  <tr style="margin-top:10px;">
+								  <tr data-ng-repeat="choice in choices">
 									<td>Filter Rule 1</td>
 									<td>
-									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
-									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
+									  <button class="btn btn-default" ng-click="addNewChoice()"  type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
+									  <button class="btn btn-default" ng-click="removeChoice()" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
 									</td>
 									<td class="bs-checkbox active">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</td>
 									<td class="active">
@@ -89,55 +96,38 @@ display:block;
 									</select>
 									</td>
 									<td class="active">
-									<select class="selectpicker">
-										<option>Mustard</option>
-									    <option>Ketchup</option>
-									    <option>Relish</option>
+									<select class="selectpicker" ng-change="addNewRow()">
+										<option>select</option>
+									    <option>And</option>
 									</select>
-
 									</td>
-									
-									
 								  </tr>
-								  
-								  	  <tr style="margin-top:10px;">
+								  	 <tr ng-repeat="row in rows">
 									<td></td>
 									<td align="right">
-									 
-									  <button class="btn btn-default" type="button" id="btn-plus" ><span class="glyphicon glyphicon-minus"></span></button>
+									  <button class="btn btn-default" ng-click="removeRow()" type="button" id="btn-plus" ><span class="glyphicon glyphicon-minus"></span></button>
 									</td>
 									<td class="bs-checkbox active">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</td>
 									<td class="active">
 									<select class="selectpicker">
-									  <option>Mustard</option>
-									  <option>Ketchup</option>
-									  <option>Relish</option>
+									  <option>Select</option>
+									  <option>And</option>
 									</select>
 									</td>
 									<td class="active">
 									<select class="selectpicker">
-										<option>Mustard</option>
-									    <option>Ketchup</option>
-									    <option>Relish</option>
+										<option>Select</option>
+									    <option>And</option>
 									</select>
-
-									</td>
-									
-									
+									</td>							
 								  </tr>
-								  
 								   <tr>
 									<td></td>
-									<td>
-									 
+									<td> 
 									  Union(+)
-									</td>
-									
-									
-									
-								  </tr>
-								  
-								    <tr>
+									</td>	
+								  </tr> 
+								   <!-- <tr>
 									<td>Filter Rule 2</td>
 									<td>
 									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
@@ -153,9 +143,8 @@ display:block;
 									</td>
 									<td class="active">
 									<select class="selectpicker">
-									  <option>Mustard</option>
-									  <option>Ketchup</option>
-									  <option>Relish</option>
+									  <option>select</option>
+									  <option>And</option>
 									</select>
 									</td>
 								  </tr>
@@ -167,7 +156,7 @@ display:block;
 									</td>
 								  </tr>
 								  
-								      <tr>
+								     <!-- <tr>
 									<td>Filter Rule 3</td>
 									<td>
 									  <button class="btn btn-default" type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
@@ -189,10 +178,14 @@ display:block;
 									  <option>Relish</option>
 									</select>
 									</td>
-								  </tr>
+								  </tr>-->
 								</tbody>
 							</table>
-                    </div>
+							
+						<div id="choicesDisplay">
+					   {{ choices }}
+					   </div>
+					</div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary">ok</button>
                     </div>

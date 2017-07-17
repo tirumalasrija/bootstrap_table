@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module('angularjs-starter', []);
+
+        app.controller('MainCtrl', ['$scope', function ($scope) {
+
+            $scope.rows = [{ id: 'row1' }, { id: 'row2' }];
+            $scope.addNewRow = function () {
+                var newItemNo = $scope.rows.length + 1;
+                $scope.rows.push({ 'id': 'row' + newItemNo });
+            };
+            $scope.removeRow = function () {
+                var lastItem = $scope.rows.length - 1;
+                $scope.rows.splice(lastItem);
+            };
+
+            $scope.choices = [{ id: 1, text: 'choice1'}, { id: 2, text: 'choice2'}];
+            $scope.addNewChoice = function () {
+                var newItemNo = $scope.choices[$scope.choices.length -1].id + 1;
+                $scope.choices.push({ id: newItemNo, text : 'choice' + newItemNo });
+            };
+
+
+            $scope.removeChoice = function (index) {
+							$scope.choices.splice(index, 1);
+              //   var lastItem = $scope.choices.length - 1;
+              //   $scope.choices.splice(lastItem);
+            };
+        }]);
+    </script>
+    <style>
+        .input-group {
+            padding-bottom: 15px;
+        }
+
+        .modal-header {
+            background-color: #ccc;
+        }
+
+        .input-group {
+            padding-bottom: 15px;
+        }
+
+        .table.no-border tr td, .table.no-border tr th {
+            border-width: 0;
+        }
+
+        .table {
+            display: block;
+            border-collapse: separate;
+            border-spacing: 0px 5px;
+        }
+    </style>
+</head>
+<body ng-app="angularjs-starter">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" ng-controller="MainCtrl">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<div ng-repeat="choice in choices">
+							<span>{{choice.text}}
+							<p>Union (+)</p>
+                		</div>
+                </div>
+                    		<div class="modal-body">
+                          		<div class="table no-border" >
+									<div data-ng-repeat="choice in choices">
+										<span> Filter Rule {{choice.id}} </span>
+										<button class="btn btn-default" ng-click="addNewChoice()"  type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
+										<button class="btn btn-default" ng-click="removeChoice($index)" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
+										<span> Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not 
+										<select class="selectpicker">	
+											<option>Mustard</option>
+											<option>Ketchup</option>
+											<option>Relish</option>
+										</select>
+										<select class="selectpicker" ng-model="choice.operator" ng-change="addNewRow()">
+											<option value=''>select</option>
+											<option value="and">And</option>
+										</select>				
+											<p ng-show="choice.operator" style="    margin-left: 80px;padding-top: 25px;">
+												<button class="btn btn-default" ng-click="choice.operator = '';" type="button" id="btn-plus" ><span class="glyphicon glyphicon-minus"></span></button>
+												<span>Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</span>
+												<select class="selectpicker">
+													<option>Select</option>
+													<option>And</option>
+												</select>
+											</p>
+										<p style="margin-left: 80px; padding: 15px 0;">Union (+) </p>
+									</div>
+								</div>
+                			</div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>															  													  

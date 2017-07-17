@@ -20,7 +20,7 @@
                 $scope.rows.splice(lastItem);
             };
 
-            $scope.choices = [{ id: 1, text: 'choice1'}, { id: 2, text: 'choice2'}];
+            $scope.choices = [{ id: 1, text: 'choice1'}];
             $scope.addNewChoice = function () {
                 var newItemNo = $scope.choices[$scope.choices.length -1].id + 1;
                 $scope.choices.push({ id: newItemNo, text : 'choice' + newItemNo });
@@ -35,27 +35,33 @@
         }]);
     </script>
     <style>
-        .input-group {
-            padding-bottom: 15px;
-        }
+   
 
         .modal-header {
             background-color: #ccc;
         }
 
-        .input-group {
-            padding-bottom: 15px;
-        }
 
-        .table.no-border tr td, .table.no-border tr th {
-            border-width: 0;
-        }
 
-        .table {
-            display: block;
-            border-collapse: separate;
-            border-spacing: 0px 5px;
-        }
+
+		
+		    .heading
+    {
+        display: table-row;
+        font-weight: bold;
+        text-align: center;
+    }
+    .rowT
+    {
+        display: table-row;
+    }
+    .cell
+    {
+        display: table-cell;
+        border-width: thin;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
     </style>
 </head>
 <body ng-app="angularjs-starter">
@@ -72,30 +78,110 @@
                 </div>
                     		<div class="modal-body">
                           		<div class="table no-border" >
-									<div data-ng-repeat="choice in choices">
-										<span> Filter Rule {{choice.id}} </span>
+									  <div class="heading">
+											<div class="cell">
+												<p></p>
+											</div>
+											<div class="cell">
+												<p></p>
+											</div>
+											<div class="cell">
+												<p></p>
+											</div>
+											<div class="cell">
+												<p>Condition</p>
+											</div>
+											<div class="cell">
+												<p>Operation</p>
+											</div>
+										</div>
+									<div data-ng-repeat="choice in choices" class="rowT">
+										<div class="cell"> Filter Rule {{choice.id}} </div>
+										<div class="cell">
 										<button class="btn btn-default" ng-click="addNewChoice()"  type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
 										<button class="btn btn-default" ng-click="removeChoice($index)" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
-										<span> Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not 
-										<select class="selectpicker">	
+										</div>
+										<div class="cell"> Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not </div>
+										<div class="cell">
+										<select class="selectpicker" class="rowT">	
 											<option>Mustard</option>
 											<option>Ketchup</option>
 											<option>Relish</option>
 										</select>
-										<select class="selectpicker" ng-model="choice.operator" ng-change="addNewRow()">
+										</div>
+										<div class="cell">
+										<select class="selectpicker rowT" ng-model="choice.operator" ng-change="addNewRow()">
 											<option value=''>select</option>
 											<option value="and">And</option>
-										</select>				
-											<p ng-show="choice.operator" style="    margin-left: 80px;padding-top: 25px;">
-												<button class="btn btn-default" ng-click="choice.operator = '';" type="button" id="btn-plus" ><span class="glyphicon glyphicon-minus"></span></button>
-												<span>Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</span>
+										</select>
+										</div>									
+											<div ng-show="choice.operator" class="rowT">
+											<div class="cell"></div>
+											<div class="cell"></div>
+											<div class="cell">
+												<button class="btn btn-default" ng-click="choice.operator = '';" type="button" id="btn-plus" ><span class="glyphicon glyphicon-minus"></span></button></div>
+												<div class="cell">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</div>
+												<div class="cell">
+												<select class="selectpicker">	
+													<option>Mustard</option>
+													<option>Ketchup</option>
+													<option>Relish</option>
+												</select>
+												</div>
+												<div class="cell">
 												<select class="selectpicker">
 													<option>Select</option>
 													<option>And</option>
 												</select>
-											</p>
-										<p style="margin-left: 80px; padding: 15px 0;">Union (+) </p>
+												</div>
+											</div>
+										<div class="rowT">
+										<div class="cell">
+										Union (+) </div>
+										</div>
 									</div>
+									
+									
+									
+									
+									   <div class="heading">
+							        <div class="cell">
+							            <p>Heading 1</p>
+							        </div>
+							        <div class="cell">
+							            <p>Heading 2</p>
+							        </div>
+							        <div class="cell">
+							            <p>Heading 3</p>
+							        </div>
+							    </div>
+							    <div class="rowT">
+							        <div class="cell">
+							            <p>Row 1 Column 1</p>
+							        </div>
+							        <div class="cell">
+							            <p>Row 1 Column 2</p>
+							        </div>
+							        <div class="cell">
+							            <p>Row 1 Column 3</p>
+							        </div>
+							    </div>
+							    <div class="rowT">
+							        <div class="cell">
+							            <p>Row 2 Column 1</p>
+							        </div>
+							        <div class="cell">
+							            <p>Row 2 Column 2</p>
+							        </div>
+							        <div class="cell">
+							            <p>Row 2 Column 3</p>
+							        </div>
+							    </div>
+									
+									
+									
+									
+									
 								</div>
                 			</div>
 

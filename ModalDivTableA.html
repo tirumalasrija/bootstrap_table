@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script type="text/javascript">
+        var app = angular.module('angularjs-starter', []);
+
+        app.controller('MainCtrl', ['$scope', function ($scope) {
+
+            $scope.rows = [{ id: 'row1' }, { id: 'row2' }];
+            $scope.addNewRow = function () {
+                var newItemNo = $scope.rows.length + 1;
+                $scope.rows.push({ 'id': 'row' + newItemNo });
+            };
+            $scope.removeRow = function () {
+                var lastItem = $scope.rows.length - 1;
+                $scope.rows.splice(lastItem);
+            };
+
+            $scope.choices = [{ id: 1, text: 'choice1'}];
+            $scope.addNewChoice = function () {
+                var newItemNo = $scope.choices[$scope.choices.length -1].id + 1;
+                $scope.choices.push({ id: newItemNo, text : 'choice' + newItemNo });
+            };
+
+
+            $scope.removeChoice = function (index) {
+							$scope.choices.splice(index, 1);
+              //   var lastItem = $scope.choices.length - 1;
+              //   $scope.choices.splice(lastItem);
+            };
+        }]);
+    </script>
+    <style>
+   
+
+        .modal-header {
+            background-color: #ccc;
+        }	
+		    .heading
+    {
+        display: table-header-group;
+        font-weight: bold;
+        
+    }
+    .rowT
+    {
+        display: table-row;
+    }
+    .cell
+    {
+        display: table-cell;
+       
+    }
+	.table{
+	display: table;
+	width:70%
+	}
+    </style>
+</head>
+<body ng-app="angularjs-starter">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" ng-controller="MainCtrl">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<div ng-repeat="choice in choices">
+							<span>{{choice.text}}
+							<p>Union (+)</p>
+                		</div>
+                </div>
+                    		<div class="modal-body">
+                          		<div class="table no-border" >
+									  <div class="heading">
+											<div class="cell">
+												<p></p>
+											</div>
+											<div class="cell">
+												<p></p>
+											</div>
+											<div class="cell">
+												<p></p>
+											</div>
+											<div class="cell">
+												<p>Condition</p>
+											</div>
+											<div class="cell">
+												<p>Operation</p>
+											</div>
+										</div>
+									<div data-ng-repeat="choice in choices" style="display: table-row-group;">
+										<div class="rowT">
+											<div class="cell"> Filter Rule {{choice.id}} </div>
+											<div class="cell">
+											<button class="btn btn-default" ng-click="addNewChoice()"  type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
+											<button class="btn btn-default" ng-click="removeChoice($index)" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
+											</div>
+											<div class="cell"> Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not </div>
+											<div class="cell">
+											<select class="selectpicker" class="rowT">	
+												<option>Mustard</option>
+												<option>Ketchup</option>
+												<option>Relish</option>
+											</select>
+											</div>
+											<div class="cell">
+												<select class="selectpicker rowT" ng-model="choice.operator" ng-change="addNewRow()">
+													<option value=''>select</option>
+													<option value="and">And</option>
+												</select>
+											</div>		
+										</div>
+											<div ng-show="choice.operator" class="rowT">
+											<div class="cell"></div>
+											<div class="cell">
+												<button class="btn btn-default" ng-click="choice.operator = '';" type="button" id="btn-plus" ><span class="glyphicon glyphicon-minus"></span></button></div>
+												<div class="cell">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</div>
+												<div class="cell">
+												<select class="selectpicker">	
+													<option>Mustard</option>
+													<option>Ketchup</option>
+													<option>Relish</option>
+												</select>
+												</div>
+												<div class="cell">
+												<select class="selectpicker">
+													<option>Select</option>
+													<option>And</option>
+												</select>
+												</div>
+											</div>
+										<div class="rowT">
+										<div class="cell">
+										Union (+) </div>
+										</div>
+									</div>
+								
+								</div>
+                			</div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>															  													  

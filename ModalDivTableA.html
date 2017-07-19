@@ -39,6 +39,9 @@
 
         .modal-header {
             background-color: #ccc;
+			    height: 75px;
+    overflow: scroll;
+	overflow-x: hidden;
         }	
 		    .heading
     {
@@ -46,6 +49,11 @@
         font-weight: bold;
         
     }
+	
+	.modal-body{
+    height: 300px;
+    overflow-y: auto;
+}
     .rowT
     {
         display: table-row;
@@ -53,12 +61,24 @@
     .cell
     {
         display: table-cell;
+	    padding-top: 5px;
        
     }
 	.table{
 	display: table;
-	width:70%
+	width:70%;
+	border-spacing: 0px 5px;
 	}
+	
+	.btnP{
+    background-color: #f5f5f5;
+    border-radius: 0px;
+	}
+	
+	.active{
+	    background-color: #f5f5f5;
+		}
+
     </style>
 </head>
 <body ng-app="angularjs-starter">
@@ -96,19 +116,19 @@
 										<div class="rowT">
 											<div class="cell"> Filter Rule {{choice.id}} </div>
 											<div class="cell">
-											<button class="btn btn-default" ng-click="addNewChoice()"  type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
-											<button class="btn btn-default" ng-click="removeChoice($index)" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
+											<button class="btn btn-default btnP" ng-click="addNewChoice()"  type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
+											<button class="btn btn-default btnP" ng-click="removeChoice($index)" type="button" id="btn-plus"><span class="glyphicon glyphicon-minus"></span></button>
 											</div>
-											<div class="cell"> Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not </div>
-											<div class="cell">
+											<div class="cell active"> Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not </div>
+											<div class="cell active">
 											<select class="selectpicker" class="rowT">	
 												<option>Mustard</option>
 												<option>Ketchup</option>
 												<option>Relish</option>
 											</select>
 											</div>
-											<div class="cell">
-												<select class="selectpicker rowT" ng-model="choice.operator" ng-change="addNewRow()">
+											<div class="cell active">
+												<select class="selectpicker" ng-model="choice.operator" >
 													<option value=''>select</option>
 													<option value="and">And</option>
 												</select>
@@ -117,19 +137,40 @@
 											<div ng-show="choice.operator" class="rowT">
 											<div class="cell"></div>
 											<div class="cell">
-												<button class="btn btn-default" ng-click="choice.operator = '';" type="button" id="btn-plus" ><span class="glyphicon glyphicon-minus"></span></button></div>
-												<div class="cell">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</div>
-												<div class="cell">
+												<button class="btn btn-default btnP" style="visibility: hidden;" type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
+												<button class="btn btn-default btnP" ng-click="choice.operator = '';" type="button" id="btn-plus" ><span class="glyphicon glyphicon-minus"></span></button></div>
+												<div class="cell active">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</div>
+												<div class="cell active">
 												<select class="selectpicker">	
 													<option>Mustard</option>
 													<option>Ketchup</option>
 													<option>Relish</option>
 												</select>
 												</div>
-												<div class="cell">
-												<select class="selectpicker">
-													<option>Select</option>
-													<option>And</option>
+												<div class="cell active">
+												<select class="selectpicker" mg-modal="sub.operator">
+													<option value=''>Select</option>
+													<option value="and">And</option>
+												</select>
+												</div>
+											</div>
+											<div ng-show="sub.operator">
+											<div class="cell"></div>
+											<div class="cell">
+												<button class="btn btn-default btnP" style="visibility: hidden;" type="button" id="btn-plus"><span class="glyphicon glyphicon-plus"></span></button>
+												<button class="btn btn-default btnP" ng-click="sub.operator = '';" type="button" id="btn-plus" ><span class="glyphicon glyphicon-minus"></span></button></div>
+												<div class="cell active">Get all vehicles which are <input data-index="0" name="btSelectItem" type="checkbox" value="0"> not</div>
+												<div class="cell active">
+												<select class="selectpicker">	
+													<option>Mustard</option>
+													<option>Ketchup</option>
+													<option>Relish</option>
+												</select>
+												</div>
+												<div class="cell active">
+												<select class="selectpicker" mg-modal="sub.operator">
+													<option value=''>Select</option>
+													<option value="and">And</option>
 												</select>
 												</div>
 											</div>
